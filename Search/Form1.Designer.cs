@@ -28,81 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dirButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
+            this.dirTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.autoScrollCheckBox = new System.Windows.Forms.CheckBox();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // dirButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(247, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dirButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dirButton.Location = new System.Drawing.Point(339, 26);
+            this.dirButton.Name = "dirButton";
+            this.dirButton.Size = new System.Drawing.Size(25, 23);
+            this.dirButton.TabIndex = 0;
+            this.dirButton.Text = "...";
+            this.dirButton.UseVisualStyleBackColor = true;
+            this.dirButton.Click += new System.EventHandler(this.DirButton_Click);
             // 
-            // button2
+            // searchButton
             // 
-            this.button2.Location = new System.Drawing.Point(197, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.searchButton.Location = new System.Drawing.Point(289, 5);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Start search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 61);
+            this.listBox1.Location = new System.Drawing.Point(6, 113);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(260, 173);
+            this.listBox1.Size = new System.Drawing.Size(377, 212);
             this.listBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 242);
+            this.label1.Location = new System.Drawing.Point(9, 338);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
             // 
-            // comboBox1
+            // typeComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 34);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(179, 21);
-            this.comboBox1.TabIndex = 4;
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Items.AddRange(new object[] {
+            ".txt",
+            ".docx",
+            ".js",
+            ".css",
+            ".html",
+            ".sc",
+            ".sln",
+            ".git",
+            ".jpg",
+            ".png"});
+            this.typeComboBox.Location = new System.Drawing.Point(90, 7);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(179, 21);
+            this.typeComboBox.TabIndex = 4;
             // 
-            // textBox1
+            // dirTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(229, 20);
-            this.textBox1.TabIndex = 5;
+            this.dirTextBox.Location = new System.Drawing.Point(12, 34);
+            this.dirTextBox.Name = "dirTextBox";
+            this.dirTextBox.Size = new System.Drawing.Size(328, 20);
+            this.dirTextBox.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Select directory:";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dirButton);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(377, 56);
+            this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.typeComboBox);
+            this.panel2.Controls.Add(this.searchButton);
+            this.panel2.Location = new System.Drawing.Point(6, 68);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(377, 35);
+            this.panel2.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Select type file:";
+            // 
+            // autoScrollCheckBox
+            // 
+            this.autoScrollCheckBox.AutoSize = true;
+            this.autoScrollCheckBox.Checked = true;
+            this.autoScrollCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoScrollCheckBox.Location = new System.Drawing.Point(300, 337);
+            this.autoScrollCheckBox.Name = "autoScrollCheckBox";
+            this.autoScrollCheckBox.Size = new System.Drawing.Size(77, 17);
+            this.autoScrollCheckBox.TabIndex = 9;
+            this.autoScrollCheckBox.Text = "Auto Scroll";
+            this.autoScrollCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(389, 362);
+            this.Controls.Add(this.autoScrollCheckBox);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dirTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Form1";
             this.Text = "Search";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,12 +182,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button dirButton;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.TextBox dirTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox autoScrollCheckBox;
     }
 }
 

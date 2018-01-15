@@ -1,0 +1,10 @@
+C:\Users\Artur\source\repos\Search\Search\bin\Release\Search.exe.config
+C:\Users\Artur\source\repos\Search\Search\bin\Release\Search.exe
+C:\Users\Artur\source\repos\Search\Search\bin\Release\Search.pdb
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.Form1.resources
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.Properties.Resources.resources
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.csproj.GenerateResource.Cache
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.csproj.CoreCompileInputs.cache
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.exe
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.pdb
+C:\Users\Artur\source\repos\Search\Search\obj\Release\Search.csprojResolveAssemblyReference.cache

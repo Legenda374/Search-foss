@@ -1,28 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Search
 {
     public partial class Form1 : Form
     {
+        string typeFile = ""; //тип файла
+        int count = 0; //количество файлов
+        System.Threading.Thread Thread1; //обьявление потока для поиска
+
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private void FileSearchFunction(object Dir)
         {
-            System.IO.DirectoryInfo DI = new System.IO.DirectoryInfo((string)Dir);
-            System.IO.DirectoryInfo[] SubDir = null;
+            System.IO.DirectoryInfo DI = null; //рабочая директория
+            System.IO.DirectoryInfo[] SubDir = null; // массив директорий 
+            System.IO.FileInfo[] FI = null; // массив файлов
             try
             {
+                DI = new System.IO.DirectoryInfo((string)Dir);
                 SubDir = DI.GetDirectories();
             }
             catch
@@ -31,17 +30,43 @@ namespace Search
             }
 
             for (int i = 0; i < SubDir.Length; ++i)
-                this.FileSearchFunction(SubDir[i].FullName);
+                this.FileSearchFunction(SubDir[i].FullName); //рекурсивный вызов
 
-            System.IO.FileInfo[] FI = DI.GetFiles();
+            try
+            {
+                FI = DI.GetFiles(); //получение списка файлов
+            }
+            catch
+            {
+                return;
+            }
+
+            /*Поиск и вывод необходимых файлов*/
             for (int i = 0; i < FI.Length; ++i)
-                this.Invoke(new System.Threading.ThreadStart(delegate
+                try
                 {
-                    listBox1.Items.Add(FI[i].FullName);
-                }));
+                    this.Invoke(new System.Threading.ThreadStart(delegate
+                    {
+                        if (typeFile == System.IO.Path.GetExtension(FI[i].FullName))
+                        {
+                            listBox1.Items.Add(FI[i].Name);
+                            if (autoScrollCheckBox.Checked == true)
+                            {
+                                listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                            }
+                            label1.Text = "Quantity fires:" + Convert.ToString(count++);
+                        }
+                    }));
+                }
+                catch
+                {
+                    return;
+                }
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*Обработчик кнопки Выбор директории*/
+        private void DirButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
@@ -49,17 +74,39 @@ namespace Search
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = DirDialog.SelectedPath;
+                dirTextBox.Text = DirDialog.SelectedPath;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /*Обработчик кнопки Start/Stop*/
+        private void SearchButton_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != String.Empty && System.IO.Directory.Exists(textBox1.Text))
+            if (searchButton.Text == "Start search")
             {
-                System.Threading.Thread T = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(FileSearchFunction));
-                T.Start(textBox1.Text);
+                if (dirTextBox.Text != String.Empty && System.IO.Directory.Exists(dirTextBox.Text))
+                {
+                    listBox1.Items.Clear();
+                    label1.Text = "";
+                    count = 0;
+                    typeFile = typeComboBox.Text;
+                    Thread1 = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(FileSearchFunction));
+                    Thread1.Start(dirTextBox.Text);
+                    searchButton.Text = "Stop search";
+                }
+                else MessageBox.Show("Select directory!");
             }
+            else
+            {
+                Thread1.Abort();
+                dirTextBox.Clear();
+                typeComboBox.Text = "";
+                searchButton.Text = "Start search";
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
