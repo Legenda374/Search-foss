@@ -47,14 +47,20 @@ namespace Search
                 {
                     this.Invoke(new System.Threading.ThreadStart(delegate
                     {
+                        if (FI[i].FullName.Length > 60)
+                            label4.Text = "..." + FI[i].FullName.Substring(FI[i].FullName.Length - 60);
+                        else
+                            label4.Text = FI[i].FullName;
+
                         if (typeFile == System.IO.Path.GetExtension(FI[i].FullName))
                         {
                             listBox1.Items.Add(FI[i].Name);
+
                             if (autoScrollCheckBox.Checked == true)
                             {
                                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
                             }
-                            label1.Text = "Quantity fires:" + Convert.ToString(count++);
+                            label1.Text = "Quantity fires:" + Convert.ToString(++count);
                         }
                     }));
                 }
@@ -86,7 +92,7 @@ namespace Search
                 if (dirTextBox.Text != String.Empty && System.IO.Directory.Exists(dirTextBox.Text))
                 {
                     listBox1.Items.Clear();
-                    label1.Text = "";
+                    label1.Text = "Quantity fires: 0";
                     count = 0;
                     typeFile = typeComboBox.Text;
                     Thread1 = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(FileSearchFunction));
@@ -99,14 +105,10 @@ namespace Search
             {
                 Thread1.Abort();
                 dirTextBox.Clear();
+                label4.Text = "";
                 typeComboBox.Text = "";
                 searchButton.Text = "Start search";
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

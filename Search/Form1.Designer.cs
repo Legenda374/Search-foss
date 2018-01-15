@@ -39,6 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.autoScrollCheckBox = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -75,10 +76,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 338);
+            this.label1.Location = new System.Drawing.Point(15, 332);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 3;
+            this.label1.Text = "Quantity fires: 0";
             // 
             // typeComboBox
             // 
@@ -149,18 +151,27 @@
             this.autoScrollCheckBox.AutoSize = true;
             this.autoScrollCheckBox.Checked = true;
             this.autoScrollCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoScrollCheckBox.Location = new System.Drawing.Point(300, 337);
+            this.autoScrollCheckBox.Location = new System.Drawing.Point(306, 331);
             this.autoScrollCheckBox.Name = "autoScrollCheckBox";
             this.autoScrollCheckBox.Size = new System.Drawing.Size(77, 17);
             this.autoScrollCheckBox.TabIndex = 9;
             this.autoScrollCheckBox.Text = "Auto Scroll";
             this.autoScrollCheckBox.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 355);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 362);
+            this.ClientSize = new System.Drawing.Size(389, 377);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.autoScrollCheckBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
@@ -171,7 +182,6 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Form1";
             this.Text = "Search";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -193,6 +203,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox autoScrollCheckBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
